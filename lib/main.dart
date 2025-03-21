@@ -1,4 +1,6 @@
+import 'package:eco_eaters_app/core/ui/seller/widgets/layout_view.dart';
 import 'package:flutter/material.dart';
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
@@ -8,12 +10,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
-
+      debugShowCheckedModeBanner: false,
+      home: LayOutView(),
     );
   }
 }
