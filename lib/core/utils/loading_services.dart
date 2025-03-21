@@ -11,9 +11,9 @@ void ConfigLoading() {
   ..loadingStyle = EasyLoadingStyle.custom
   ..indicatorSize = 45.0
   ..radius = 10.0
-  ..backgroundColor = AppColors.whiteColor
+  ..backgroundColor = AppColors.white
   ..indicatorColor = AppColors.primaryColor
-  ..textColor = AppColors.whiteColor
+  ..textColor = AppColors.white
   ..maskColor = Colors.black
   ..userInteractions = false
   ..dismissOnTap = false;

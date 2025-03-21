@@ -1,4 +1,9 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
+import 'core/routes/app_routes.dart';
+import 'core/routes/routes_name.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
@@ -13,6 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
+      initialRoute: RoutesName.customerHome,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      builder: EasyLoading.init(
+        builder: BotToastInit(),
+      ),
 
     );
   }
