@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+
 import '../../../../constants/app_colors.dart';
 
-class CustomContainer extends StatelessWidget {
+class CustomInsightsContainer extends StatelessWidget {
   IconData icon;
   String text;
   String number;
 
-   CustomContainer({
-    super.key,
+  CustomInsightsContainer(
+      {super.key,
      required this.icon,
     required this.text,
      required this.number
@@ -26,6 +27,10 @@ class CustomContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppColors.lightMint,
+          width: 2,
+        ),
       ),
       child: Column(
         children: [
