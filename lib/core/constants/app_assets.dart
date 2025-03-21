@@ -8,5 +8,7 @@ abstract class AppAssets{
   static const String searchIcon = "assets/icons/searchIcon.png";
   static const String ad = "assets/images/ad.png";
   static const String recentlyAddedImg = "assets/images/recentlyAddedImg.png";
+  static const String appLogo = "assets/images/appLogo.png";
+  static const String restaurantsCardImg = "assets/images/restaurantsCardImg.png";
 
 }
