@@ -18,7 +18,7 @@ class AppRoutes{
 
       default:
         return MaterialPageRoute(
-          builder: (context) => HomeTab() ,
+          builder: (context) => Layout() ,
           settings: settings,
         );
     }
