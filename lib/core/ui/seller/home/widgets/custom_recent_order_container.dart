@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../constants/app_colors.dart';
 
-class CustomOrderContainer extends StatelessWidget {
+class CustomRecentOrderContainer extends StatelessWidget {
   String orderNumber;
   String orderStatus;
   Color orderStatusColor;
@@ -11,7 +11,7 @@ class CustomOrderContainer extends StatelessWidget {
   String customerName;
   String time;
 
-  CustomOrderContainer({
+  CustomRecentOrderContainer({
     super.key,
     required this.orderNumber,
     required this.orderStatus,
@@ -56,7 +56,7 @@ class CustomOrderContainer extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: orderStatusColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
                   orderStatus,

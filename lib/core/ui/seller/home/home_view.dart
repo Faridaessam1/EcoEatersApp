@@ -1,7 +1,7 @@
 import 'package:eco_eaters_app/core/constants/app_colors.dart';
 import 'package:eco_eaters_app/core/extentions/padding_ext.dart';
 import 'package:eco_eaters_app/core/ui/seller/home/widgets/custom_insights_container.dart';
-import 'package:eco_eaters_app/core/ui/seller/home/widgets/custom_order_container.dart';
+import 'package:eco_eaters_app/core/ui/seller/home/widgets/custom_recent_order_container.dart';
 import 'package:eco_eaters_app/core/ui/seller/home/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -133,10 +133,10 @@ class HomeView extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          CustomOrderContainer(
+          CustomRecentOrderContainer(
               orderNumber: "2458",
               orderStatus: "Pending",
-              orderStatusColor: AppColors.orange,
+              orderStatusColor: AppColors.red,
               orderItemCount: "2",
               orderAmount: "24:00",
               customerName: "Sarah M.",
@@ -144,7 +144,7 @@ class HomeView extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          CustomOrderContainer(
+          CustomRecentOrderContainer(
               orderNumber: "2457",
               orderStatus: "Completed",
               orderStatusColor: AppColors.green,
