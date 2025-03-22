@@ -1,11 +1,11 @@
 import 'package:eco_eaters_app/core/constants/app_colors.dart';
 import 'package:eco_eaters_app/core/ui/seller/home/home_view.dart';
-import 'package:eco_eaters_app/core/ui/seller/new/new_view.dart';
 import 'package:eco_eaters_app/core/ui/seller/orders/orders_view.dart';
 import 'package:eco_eaters_app/core/ui/seller/profile/profile_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/app_assets.dart';
+import '../new dish/new_dish_view.dart';
 
 class LayOutView extends StatefulWidget {
   const LayOutView({super.key});
@@ -19,9 +19,7 @@ class _LayOutViewState extends State<LayOutView> {
   int selectedIndex=0;
   List <Widget> tabs =[
     HomeView(),
-    OrdersView(),
-    NewView(),
-    ProfileView()
+    OrdersView(), NewDishView(), ProfileView()
   ];
 
   @override

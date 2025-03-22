@@ -28,11 +28,11 @@ class _OrdersViewState extends State<OrdersView> {
           ),
         ),
         actions: [
-          Icon(
-            Icons.notifications_rounded,
-          ),
-          SizedBox(
-            width: 20,
+          IconButton(
+            icon: Icon(
+              Icons.notifications_rounded,
+            ),
+            onPressed: () {},
           ),
         ],
       ),

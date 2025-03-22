@@ -1,3 +1,4 @@
+import 'package:eco_eaters_app/core/ui/seller/widgets/custom_status_container.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/app_colors.dart';
@@ -50,22 +51,9 @@ class CustomRecentOrderContainer extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              Container(
-                width: 63.5,
-                height: 24,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: orderStatusColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Text(
-                  orderStatus,
-                  style: TextStyle(
-                    color: orderStatusColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+              CustomStatusContainer(
+                orderStatus: orderStatus,
+                orderStatusColor: orderStatusColor,
               )
             ],
           ),
