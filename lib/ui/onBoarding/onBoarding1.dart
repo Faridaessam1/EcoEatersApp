@@ -34,7 +34,7 @@ class OnBoardingPage1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildFeatureChip(
-                  Icons.percent, "Up to 70% Off", AppColors.green, AppColors.green),
+                  Icons.percent, "Up to 70% Off", AppColors.primaryColor, AppColors.green),
               SizedBox(width: 30),
               _buildFeatureChip(
                   Icons.eco, "Eco-friendly", AppColors.yellow, AppColors.orange),
@@ -45,7 +45,7 @@ class OnBoardingPage1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildFeatureChip(
-                  Icons.restaurant, "Quality Food", AppColors.green,
+                  Icons.restaurant, "Quality Food", AppColors.primaryColor,
                   AppColors.green),
             ],
           ),

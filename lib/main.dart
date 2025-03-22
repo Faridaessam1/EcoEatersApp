@@ -1,5 +1,4 @@
-
-import 'package:eco_eaters_app/ui/onBoarding/widget/onBoardingScreen.dart';
+import 'package:eco_eaters_app/ui/auth/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: OnBoardingScreen(),
+          home: UserTypeScreen(),
           navigatorKey:navigatorKey ,
         );
       },
