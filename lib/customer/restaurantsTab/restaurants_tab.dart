@@ -1,18 +1,52 @@
 import 'package:eco_eaters_app/core/constants/app_assets.dart';
 import 'package:eco_eaters_app/core/constants/app_colors.dart';
+import 'package:eco_eaters_app/core/routes/routes_name.dart';
 import 'package:eco_eaters_app/core/widgets/custom_text_form_field.dart';
 import 'package:eco_eaters_app/customer/restaurantsTab/widgets/custom_tab_bar_item.dart';
 import 'package:eco_eaters_app/customer/restaurantsTab/widgets/restaurant_card.dart';
 import 'package:flutter/material.dart';
 
+import '../../Data/restaurant_card_data.dart';
+
 class RestaurantsTab extends StatefulWidget {
+
   @override
   State<RestaurantsTab> createState() => _RestaurantsTabState();
 }
 
 class _RestaurantsTabState extends State<RestaurantsTab> {
   int SelectedIndex = 0;
-  List<String> tabNames = ["All", "Fast Food", "Salad", "Healthy", "Desserts"];
+  List<RestaurantCardData> restaurantsData=[
+    RestaurantCardData(
+        imgPath: AppAssets.restaurantsCardImg,
+        restaurantName: "Green Kitchen",
+        restaurantCategory: "Organic - Vegan",
+        location: "2.1 KM away ",
+        deliveryEstimatedTime:" 25 - 35 min ",
+    ),
+    RestaurantCardData(
+        imgPath: AppAssets.restaurantsCardImg,
+        restaurantName: "Green Kitchen",
+        restaurantCategory: "Organic - Vegan",
+        location: "2.1 KM away ",
+        deliveryEstimatedTime:" 25 - 35 min ",
+    ),
+    RestaurantCardData(
+        imgPath: AppAssets.restaurantsCardImg,
+        restaurantName: "Green Kitchen",
+        restaurantCategory: "Organic - Vegan",
+        location: "2.1 KM away ",
+        deliveryEstimatedTime:" 25 - 35 min ",
+    ),
+    RestaurantCardData(
+        imgPath: AppAssets.restaurantsCardImg,
+        restaurantName: "Green Kitchen",
+        restaurantCategory: "Organic - Vegan",
+        location: "2.1 KM away ",
+        deliveryEstimatedTime:" 25 - 35 min ",
+    ),
+  ];
+  List<String> tabNames = ["All", "Fast Food", "Salad", "Healthy", "Desserts",];
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +114,16 @@ class _RestaurantsTabState extends State<RestaurantsTab> {
               Expanded(
                 child: ListView.separated(
 
-                  itemBuilder:(context, index) => RestaurantCard(),
+                  itemBuilder:(context, index) => GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, RoutesName.restaurantFoodItem);
+                    },
+                    child: RestaurantCard(
+                      restaurantCardData:restaurantsData[index] ,
+                    ),
+                  ),
                   separatorBuilder: (context, index) => SizedBox(width:16 ,),
-                  itemCount: 6,
+                  itemCount: restaurantsData.length,
                 ),
               ),
             ],

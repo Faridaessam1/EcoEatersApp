@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../Data/restaurant_card_data.dart';
 
 class RestaurantCard extends StatelessWidget{
+  RestaurantCardData restaurantCardData;
+
+  RestaurantCard({super.key, required this.restaurantCardData});
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -15,7 +20,7 @@ class RestaurantCard extends StatelessWidget{
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset(AppAssets.restaurantsCardImg),
+            child: Image.asset(restaurantCardData.imgPath),
           ),
           SizedBox(height: 3,),
           Row(
@@ -23,7 +28,7 @@ class RestaurantCard extends StatelessWidget{
               Column(
                 children: [
                   Text(
-                    "Buddha Bowl",
+                    restaurantCardData.restaurantName,
                     style: TextStyle(
                       color: AppColors.black,
                       fontSize: 16,
@@ -31,7 +36,7 @@ class RestaurantCard extends StatelessWidget{
                     ),
                   ),
                   Text(
-                    "Organic • Vegan",
+                    restaurantCardData.restaurantCategory,
                     style: TextStyle(
                       color: AppColors.darkGrey,
                       fontSize: 16,
@@ -53,14 +58,14 @@ class RestaurantCard extends StatelessWidget{
           Row(
             children: [
               Icon(Icons.location_on ,color: AppColors.black,),
-              Text("2.1 km away  . ",
+              Text(restaurantCardData.location,
                 style: TextStyle(
                   color: AppColors.darkGrey,
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),),
               Icon(Icons.timelapse_outlined ,color: AppColors.black,),
-              Text(" 25 - 35 min",
+              Text(restaurantCardData.deliveryEstimatedTime,
                 style: TextStyle(
                   color: AppColors.darkGrey,
                   fontSize: 16,

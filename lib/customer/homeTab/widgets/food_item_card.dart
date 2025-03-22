@@ -2,7 +2,7 @@ import 'package:eco_eaters_app/core/constants/app_assets.dart';
 import 'package:eco_eaters_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class RecentlyAddedCard extends StatelessWidget {
+class FoodItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;

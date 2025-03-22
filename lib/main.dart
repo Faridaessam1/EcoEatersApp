@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
-      initialRoute: RoutesName.customerHome,
+      initialRoute: RoutesName.customerHomeLayout,
       onGenerateRoute: AppRoutes.onGenerateRoute,
       builder: EasyLoading.init(
         builder: BotToastInit(),

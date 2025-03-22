@@ -1,6 +1,6 @@
 import 'package:eco_eaters_app/core/constants/app_assets.dart';
 import 'package:eco_eaters_app/core/constants/app_colors.dart';
-import 'package:eco_eaters_app/customer/homeTab/widgets/recently_added_card.dart';
+import 'package:eco_eaters_app/customer/homeTab/widgets/food_item_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
@@ -33,16 +33,44 @@ class HomeTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: height * 0.20,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(AppAssets.ad),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Image.asset(
+                        AppAssets.ad,
+                        fit: BoxFit.cover,
+                      )),
                 ),
-              ),
+                Container(
+                  height: height * 0.09,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        AppColors.black.withOpacity(0.7),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "30% Off on Your First Order",
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                )
+
+              ],
             ),
+
             SizedBox(
               height: 30,
             ),
@@ -61,7 +89,7 @@ class HomeTab extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder:(context, index) => RecentlyAddedCard(),
+                itemBuilder:(context, index) => FoodItemCard(),
                 separatorBuilder: (context, index) => SizedBox(width:16 ,),
                 itemCount: 6,
               ),
