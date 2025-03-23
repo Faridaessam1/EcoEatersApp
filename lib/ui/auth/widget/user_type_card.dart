@@ -25,13 +25,15 @@ class UserTypeCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: AppColors.primaryColor.withOpacity(0.3),
-              shape: BoxShape.circle,
+          GestureDetector(
+            child: Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor.withOpacity(0.3),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: AppColors.black, size: 20),
             ),
-            child: Icon(icon, color: AppColors.black, size: 20),
           ),
           SizedBox(width: 15),
           Column(
