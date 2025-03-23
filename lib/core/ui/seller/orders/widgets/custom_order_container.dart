@@ -1,3 +1,4 @@
+import 'package:eco_eaters_app/core/data/order_data_model.dart';
 import 'package:eco_eaters_app/core/ui/seller/widgets/custom_status_container.dart';
 import 'package:flutter/material.dart';
 
@@ -5,26 +6,9 @@ import '../../../../constants/app_colors.dart';
 import '../../../../widgets/custom_elevated_button.dart';
 
 class CustomOrderContainer extends StatelessWidget {
-  final String orderNumber;
-  final String orderStatus;
-  final Color orderStatusColor;
-  final String orderDetails;
-  final String orderAmount;
-  final String customerName;
-  final String customerAddress;
-  final String time;
+  final OrderDataModel orderDataModel;
 
-  CustomOrderContainer({
-    super.key,
-    required this.orderNumber,
-    required this.orderStatus,
-    required this.orderStatusColor,
-    required this.time,
-    required this.customerName,
-    required this.customerAddress,
-    required this.orderDetails,
-    required this.orderAmount,
-  });
+  CustomOrderContainer({super.key, required this.orderDataModel});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +30,7 @@ class CustomOrderContainer extends StatelessWidget {
           Row(
             children: [
               Text(
-                "#$orderNumber",
+                "#${orderDataModel.orderNumber}",
                 style: TextStyle(
                   color: AppColors.black,
                   fontSize: 16,
@@ -55,8 +39,8 @@ class CustomOrderContainer extends StatelessWidget {
               ),
               Spacer(),
               CustomStatusContainer(
-                orderStatus: orderStatus,
-                orderStatusColor: orderStatusColor,
+                orderStatus: orderDataModel.orderStatus,
+                orderStatusColor: orderDataModel.orderStatusColor,
               )
             ],
           ),
@@ -66,7 +50,7 @@ class CustomOrderContainer extends StatelessWidget {
           Row(
             children: [
               Text(
-                time,
+                orderDataModel.time,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -89,7 +73,7 @@ class CustomOrderContainer extends StatelessWidget {
                 ),
               ),
               Text(
-                customerName,
+                orderDataModel.customerName,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -112,7 +96,7 @@ class CustomOrderContainer extends StatelessWidget {
                 ),
               ),
               Text(
-                customerAddress,
+                orderDataModel.customerAddress!,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -135,7 +119,7 @@ class CustomOrderContainer extends StatelessWidget {
                 ),
               ),
               Text(
-                orderDetails,
+                orderDataModel.orderItemCount!,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -150,7 +134,7 @@ class CustomOrderContainer extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Total: \$$orderAmount",
+                "Total: \$${orderDataModel.orderAmount}",
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 16,

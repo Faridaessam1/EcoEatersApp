@@ -2,25 +2,14 @@ import 'package:eco_eaters_app/core/ui/seller/widgets/custom_status_container.da
 import 'package:flutter/material.dart';
 
 import '../../../../constants/app_colors.dart';
+import '../../../../data/order_data_model.dart';
 
 class CustomRecentOrderContainer extends StatelessWidget {
-  String orderNumber;
-  String orderStatus;
-  Color orderStatusColor;
-  String orderItemCount;
-  String orderAmount;
-  String customerName;
-  String time;
+  final OrderDataModel orderDataModel;
 
   CustomRecentOrderContainer({
     super.key,
-    required this.orderNumber,
-    required this.orderStatus,
-    required this.orderStatusColor,
-    required this.orderItemCount,
-    required this.orderAmount,
-    required this.customerName,
-    required this.time,
+    required this.orderDataModel,
   });
 
   @override
@@ -43,7 +32,7 @@ class CustomRecentOrderContainer extends StatelessWidget {
           Row(
             children: [
               Text(
-                "#$orderNumber",
+                "#${orderDataModel.orderNumber}",
                 style: TextStyle(
                   color: AppColors.black,
                   fontSize: 16,
@@ -52,15 +41,15 @@ class CustomRecentOrderContainer extends StatelessWidget {
               ),
               Spacer(),
               CustomStatusContainer(
-                orderStatus: orderStatus,
-                orderStatusColor: orderStatusColor,
+                orderStatus: orderDataModel.orderStatus,
+                orderStatusColor: orderDataModel.orderStatusColor,
               )
             ],
           ),
           Row(
             children: [
               Text(
-                "$orderItemCount items",
+                "${orderDataModel.orderItemCount} items",
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -71,7 +60,7 @@ class CustomRecentOrderContainer extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                "\$$orderAmount",
+                "\$${orderDataModel.orderAmount}",
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -90,7 +79,7 @@ class CustomRecentOrderContainer extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                customerName,
+                orderDataModel.customerName,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -99,7 +88,7 @@ class CustomRecentOrderContainer extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                time,
+                orderDataModel.time,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
