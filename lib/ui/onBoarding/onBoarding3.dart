@@ -40,7 +40,7 @@ class OnBoardingPage3 extends StatelessWidget {
               child: Text(
                 "Join our community of conscious \nconsumers and enjoy these perks",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: size.width * 0.045, color: Colors.black38),
+                style: TextStyle(fontSize: size.width * 0.045, color: AppColors.black),
               ),
             ),
             SizedBox(height: size.height * 0.02),
