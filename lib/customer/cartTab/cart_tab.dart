@@ -1,5 +1,6 @@
 import 'package:eco_eaters_app/Data/food_card_in_cart_tab_data.dart';
 import 'package:eco_eaters_app/core/widgets/custom_elevated_button.dart';
+import 'package:eco_eaters_app/customer/cartTab/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_assets.dart';
@@ -55,7 +56,6 @@ double calculateSubtotal() {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     double subtotal = calculateSubtotal();
     double deliveryFees = 50;
     double tax = 30;
@@ -74,86 +74,12 @@ double calculateSubtotal() {
           children: [
             Expanded(
               child: ListView.separated(
-                itemBuilder: (BuildContext context, int index) {
-                  return Row(
-                    children: [
-                      Image.asset(
-                        cardData[index].foodImgPath,
-                        height: height * 0.10,
-                      ),
-                      SizedBox(
-                        width: width * 0.02,
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            cardData[index].foodName,
-                            style: TextStyle(
-                              color: AppColors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            ),
-                          ),
-                          SizedBox(
-                            width: height * 0.02,
-                          ),
-                          Text(
-                            "${cardData[index].foodPrice} L.E",
-                            style: TextStyle(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        children: [
-                          Icon(
-                            Icons.delete_rounded,
-                            color: AppColors.black,
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 14),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  width: 1,
-                                  color: AppColors.grey,
-                                )),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                IconButton(
-                                  onPressed:() => decrement(index),
-                                  icon: Icon(
-                                    Icons.remove,
-                                  ),
-                                  color: AppColors.primaryColor,
-                                ),
-                                Text(
-                                  cardData[index].foodQuantity.toString(),
-                                  style: TextStyle(
-                                      color: AppColors.black,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                IconButton(
-                                  onPressed:() => increment(index),
-                                  icon: Icon(
-                                    Icons.add,
-                                  ),
-                                  color: AppColors.primaryColor,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  );
-                },
+                itemBuilder: (BuildContext context, int index) =>
+                    FoodCardWidget(
+                  foodData: cardData[index],
+                  onIncrement:() => increment(index),
+                  onDecrement:() => decrement(index),
+                ),
                 separatorBuilder: (BuildContext context, int index) => SizedBox(height: 10,),
                 itemCount: cardData.length,
               ),
