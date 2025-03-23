@@ -1,5 +1,6 @@
 
 import 'package:eco_eaters_app/core/routes/routes_name.dart';
+import 'package:eco_eaters_app/customer/orders/customer_order_screen.dart';
 import 'package:eco_eaters_app/customer/restaurantsFoodItems/restaurants_food_items.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,10 @@ class AppRoutes{
         case RoutesName.restaurantFoodItem:
         return MaterialPageRoute(
           builder: (context) => RestaurantFoodItem(),
+          settings: settings,
+        );case RoutesName.customerOrdersScreen:
+        return MaterialPageRoute(
+          builder: (context) => CustomerOrderScreen(),
           settings: settings,
         );
 
