@@ -7,8 +7,6 @@ import '../onBoarding2.dart';
 import '../onBoarding3.dart';
 import '../onBoarding4.dart';
 
-
-
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
@@ -17,12 +15,19 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnBoardingScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final double buttonWidth = size.width * 0.8;
+    final double buttonHeight = size.height * 0.06;
+
     return Scaffold(
       body: Container(
+        width: size.width,
+        height: size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -52,32 +57,37 @@ class _OnboardingScreenState extends State<OnBoardingScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: EdgeInsets.symmetric(
+                horizontal: size.width * 0.05,
+                vertical: size.height * 0.02,
+              ),
               child: Column(
                 children: [
                   SmoothPageIndicator(
                     controller: _pageController,
                     count: 4,
                     effect: ExpandingDotsEffect(
-                      dotWidth: 10,
-                      dotHeight: 10,
+                      dotWidth: size.width * 0.025,
+                      dotHeight: size.width * 0.025,
                       activeDotColor: AppColors.green,
                     ),
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: size.height * 0.01),
                   CustomElevatedButton(
                     text: currentPage == 0 ? "Get Started" : "Next",
                     buttonColor: AppColors.primaryColor,
                     textColor: AppColors.white,
                     borderRadius: 12,
-                    fontSize: 18,
+                    fontSize: size.width * 0.045,
+                    width: buttonWidth,
+                    height: buttonHeight,
                     onPressed: () {
                       if (currentPage < 3) {
                         _pageController.nextPage(
-                            duration: Duration(milliseconds: 500),
-                            curve: Curves.ease);
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
                       } else {
-                        // Navigate to the main screen after onboarding
                         Navigator.pushReplacementNamed(context, "/auth");
                       }
                     },
@@ -90,4 +100,4 @@ class _OnboardingScreenState extends State<OnBoardingScreen> {
       ),
     );
   }
-  }
+}

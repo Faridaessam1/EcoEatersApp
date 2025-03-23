@@ -7,50 +7,59 @@ class OnBoardingPage3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
     return Padding(
-      padding: const EdgeInsets.all(30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: TextButton(
-              onPressed: () {},
-              child: const Text("Skip", style: TextStyle(color: Colors.grey)),
+      padding: EdgeInsets.all(size.width * 0.06),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text("Skip", style: TextStyle(color: Colors.grey)),
+              ),
             ),
-          ),
-          Align(
+            Align(
               alignment: Alignment.center,
-              child: Image.asset(AppAssets.onBoarding3, height: 300)),
-          const Center(
-            child: Text(
-              "Amazing Benefits Await",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              child: Image.asset(
+                AppAssets.onBoarding3,
+                height: size.height * 0.3,
+              ),
             ),
-          ),
-          const Center(
-            child: Text(
-              "Join our community of conscious \nconsumers and enjoy these perks",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black38),
+            SizedBox(height: size.height * 0.02),
+            Center(
+              child: Text(
+                "Amazing Benefits Await",
+                style: TextStyle(fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          _buildFeatureItem(Icons.local_offer, "Save up to 50%",
-              "Quality meals at amazing prices"),
-          _buildFeatureItem(
-              Icons.eco, "Reduce Food Waste", "Help save the environment"),
-          _buildFeatureItem(
-              Icons.store, "Support Local", "Help local restaurants thrive"),
-        ],
-      ),
+            SizedBox(height: size.height * 0.01),
+            Center(
+              child: Text(
+                "Join our community of conscious \nconsumers and enjoy these perks",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: size.width * 0.045, color: Colors.black38),
+              ),
+            ),
+            SizedBox(height: size.height * 0.02),
+            _buildFeatureItem(Icons.local_offer, "Save up to 50%",
+                "Quality meals at amazing prices", size),
+            _buildFeatureItem(
+                Icons.eco, "Reduce Food Waste", "Help save the environment", size),
+            _buildFeatureItem(
+                Icons.store, "Support Local", "Help local restaurants thrive", size),
+
+          ],
+        ),
     );
   }
 
-  Widget _buildFeatureItem(IconData icon, String title, String subtitle) {
+  Widget _buildFeatureItem(IconData icon, String title, String subtitle, Size size) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.symmetric(vertical: size.height * 0.01),
+      padding: EdgeInsets.all(size.width * 0.04),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -58,35 +67,42 @@ class OnBoardingPage3 extends StatelessWidget {
           BoxShadow(
             color: Colors.black12,
             blurRadius: 5,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.primaryColor,
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, color: AppColors.lightMint, size: 25),
+            padding: EdgeInsets.all(size.width * 0.02),
+            child: Icon(icon, color: AppColors.lightMint, size: size.width * 0.07),
           ),
-          const SizedBox(width: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                subtitle,
-                style: const TextStyle(fontSize: 14, color: Colors.black54),
-              ),
-            ],
+          SizedBox(width: size.width * 0.04),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(fontSize: size.width * 0.04, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(fontSize: size.width * 0.03, color: Colors.black54),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 }
+

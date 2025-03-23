@@ -7,59 +7,65 @@ class OnBoardingPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(AppAssets.onBoardingLogo),
-          SizedBox(height: 40),
-          Image.asset(AppAssets.onBoardingImg),
-          SizedBox(height: 30),
-          Text(
-            "Welcome to EcoEaters",
-            style: TextStyle(fontSize: 25,
-                fontWeight: FontWeight.w900,
-                color: AppColors.darkGreen),
-          ),
-          SizedBox(height: 20),
-          Text(
-            "Save food, save money\n save the planet.",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, color: AppColors.green,
-            fontWeight: FontWeight.w500),
-          ),
-          SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildFeatureChip(
-                  Icons.percent, "Up to 70% Off", AppColors.primaryColor, AppColors.green),
-              SizedBox(width: 30),
-              _buildFeatureChip(
-                  Icons.eco, "Eco-friendly", AppColors.yellow, AppColors.orange),
-            ],
-          ),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildFeatureChip(
-                  Icons.restaurant, "Quality Food", AppColors.primaryColor,
-                  AppColors.green),
-            ],
-          ),
+    final Size size = MediaQuery.of(context).size;
 
-        ],
-      ),
+    return Padding(
+      padding: EdgeInsets.all(size.width * 0.05),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              AppAssets.onBoardingLogo,
+              width: size.width * 0.3,
+            ),
+            Image.asset(
+              AppAssets.onBoardingImg,
+              width: size.width * 0.7,
+            ),
+            SizedBox(height: size.height * 0.03),
+            Text(
+              "Welcome to EcoEaters",
+              style: TextStyle(
+                fontSize: size.width * 0.065,
+                fontWeight: FontWeight.w900,
+                color: AppColors.darkGreen,
+              ),
+            ),
+            SizedBox(height: size.height * 0.02),
+            Text(
+              "Save food, save money\nSave the planet.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: size.width * 0.05,
+                color: AppColors.green,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(height: size.height * 0.05),
+            Wrap(
+              spacing: size.width * 0.08,
+              runSpacing: size.height * 0.02,
+              alignment: WrapAlignment.center,
+              children: [
+                _buildFeatureChip(
+                    Icons.percent, "Up to 70% Off", AppColors.primaryColor, AppColors.green, size),
+                _buildFeatureChip(
+                    Icons.eco, "Eco-friendly", AppColors.yellow, AppColors.orange, size),
+                _buildFeatureChip(
+                    Icons.restaurant, "Quality Food", AppColors.primaryColor, AppColors.green, size),
+              ],
+            ),
+          ],
+        ),
     );
   }
 
-
-  Widget _buildFeatureChip(IconData icon, String text, Color bgColor,
-      Color textColor) {
+  Widget _buildFeatureChip(IconData icon, String text, Color bgColor, Color textColor, Size size) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: EdgeInsets.symmetric(
+        horizontal: size.width * 0.03,
+        vertical: size.height * 0.015,
+      ),
       decoration: BoxDecoration(
         color: bgColor.withOpacity(0.2),
         borderRadius: BorderRadius.circular(20),
@@ -67,12 +73,15 @@ class OnBoardingPage1 extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: AppColors.black),
-          SizedBox(width: 5),
+          Icon(icon, size: size.width * 0.045, color: AppColors.black),
+          SizedBox(width: size.width * 0.02),
           Text(
             text,
             style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w600, color: textColor),
+              fontSize: size.width * 0.04,
+              fontWeight: FontWeight.w600,
+              color: textColor,
+            ),
           ),
         ],
       ),
