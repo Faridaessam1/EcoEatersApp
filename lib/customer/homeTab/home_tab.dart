@@ -1,6 +1,6 @@
 import 'package:eco_eaters_app/core/constants/app_assets.dart';
 import 'package:eco_eaters_app/core/constants/app_colors.dart';
-import 'package:eco_eaters_app/customer/homeTab/widgets/food_item_card.dart';
+import 'package:eco_eaters_app/customer/widgets/food_item_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {

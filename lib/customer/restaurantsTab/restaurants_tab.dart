@@ -3,7 +3,7 @@ import 'package:eco_eaters_app/core/constants/app_colors.dart';
 import 'package:eco_eaters_app/core/routes/routes_name.dart';
 import 'package:eco_eaters_app/core/widgets/custom_text_form_field.dart';
 import 'package:eco_eaters_app/customer/restaurantsTab/widgets/custom_tab_bar_item.dart';
-import 'package:eco_eaters_app/customer/restaurantsTab/widgets/restaurant_card.dart';
+import 'package:eco_eaters_app/customer/widgets/restaurant_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../Data/restaurant_card_data.dart';

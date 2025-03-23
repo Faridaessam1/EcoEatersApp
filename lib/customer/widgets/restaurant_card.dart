@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_assets.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../Data/restaurant_card_data.dart';
+import '../../core/constants/app_assets.dart';
+import '../../core/constants/app_colors.dart';
+import '../../Data/restaurant_card_data.dart';
 
 class RestaurantCard extends StatelessWidget{
   RestaurantCardData restaurantCardData;
