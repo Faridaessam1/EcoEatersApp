@@ -1,13 +1,26 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:eco_eaters_app/core/extentions/padding_ext.dart';
 import 'package:eco_eaters_app/core/ui/seller/widgets/custom_status_container.dart';
 import 'package:eco_eaters_app/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 
 import '../../../constants/app_colors.dart';
 
-class NewDishView extends StatelessWidget {
+class NewDishView extends StatefulWidget {
   const NewDishView({super.key});
+
+  @override
+  State<NewDishView> createState() => _NewDishViewState();
+}
+
+class _NewDishViewState extends State<NewDishView> {
+  File? _image;
+  String? _imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +63,12 @@ class NewDishView extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.grey.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
+                  image: _image != null
+                      ? DecorationImage(
+                          image: FileImage(_image!),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
                   border: Border.all(
                     color: AppColors.grey,
                     width: 2,
@@ -65,13 +84,42 @@ class NewDishView extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         color: AppColors.textGreyColor),
                   ),
-                  Text(
-                    "Choose file",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.green),
+                  GestureDetector(
+                    onTap: _pickImage,
+                    child: Text(
+                      "Choose image",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.green),
+                    ),
                   ),
+                  GestureDetector(
+                    onTap: _uploadImage,
+                    child: Text(
+                      "Upload image",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.green),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  _imageUrl != null
+                      ? Text(
+                          "Image uploaded successfully!",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.white),
+                        )
+                      : Text(
+                          "No image uploaded yet",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.white),
+                        ),
                 ],
               ),
             ),
@@ -193,5 +241,39 @@ class NewDishView extends StatelessWidget {
         ).setPadding(context, vertical: 0.01, horizontal: 0.04),
       ),
     );
+  }
+
+  void _pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        _image = File(image.path);
+      });
+    }
+  }
+
+  Future<void> _uploadImage() async {
+    if (_image == null) return;
+
+    final url = Uri.parse('https://api.cloudinary.com/v1_1/dbdwuvc3w/upload');
+    final request = http.MultipartRequest('POST', url)
+      ..fields['upload_preset'] = 'ml_default'
+      ..files.add(await http.MultipartFile.fromPath('file', _image!.path));
+
+    final response = await request.send();
+
+    if (response.statusCode == 200) {
+      final responseData = await response.stream.toBytes();
+      final responseString = String.fromCharCodes(responseData);
+      final jsonMap = jsonDecode(responseString);
+
+      setState(() {
+        _imageUrl = jsonMap['url'];
+      });
+    } else {
+      print("Upload failed: ${response.reasonPhrase}");
+    }
   }
 }
