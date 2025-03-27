@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  String? text;
-  Color? buttonColor;
-  Color? textColor;
-  Function()? onPressed;
-  Widget? child;
-  double? fontSize;
-  String? fontFamily;
-  FontWeight? fontWeight;
-  double borderRadius;
+  final String? text;
+  final Color? buttonColor;
+  final Color? textColor;
+  final Function()? onPressed;
+  final Widget? child;
+  final double? fontSize;
+  final String? fontFamily;
+  final FontWeight? fontWeight;
+  final double borderRadius;
+  final double width;
 
   CustomElevatedButton({
     super.key,
@@ -23,28 +24,32 @@ class CustomElevatedButton extends StatelessWidget {
     this.fontWeight,
     this.fontSize = 20,
     this.borderRadius = 16,
+    this.width = 310,
   });
-
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor,
-        padding: const EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: AppColors.primaryColor),
-          borderRadius: BorderRadius.circular(borderRadius),
+    return SizedBox(
+      width: width,
+      height: 56,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: buttonColor ?? AppColors.primaryColor,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: AppColors.primaryColor),
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
         ),
-      ),
-      onPressed: onPressed,
-      child: Text(
-        text!,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-          fontWeight: fontWeight,
-          fontSize: fontSize,
-          fontFamily:fontFamily,
-          color: textColor,
+        onPressed: onPressed,
+        child: Text(
+          text!,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            fontWeight: fontWeight,
+            fontSize: fontSize,
+            fontFamily: fontFamily,
+            color: textColor,
+          ),
         ),
       ),
     );
