@@ -1,6 +1,12 @@
 import 'package:eco_eaters_app/ui/auth/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'core/routes/app_routes.dart';
+import 'core/routes/routes_name.dart';
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
@@ -9,19 +15,17 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: UserTypeScreen(),
-          navigatorKey:navigatorKey ,
-        );
-      },
+    return MaterialApp(
+      navigatorKey: navigatorKey,
+      initialRoute: RoutesName.customerHome,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      debugShowCheckedModeBanner: false,
+      builder: EasyLoading.init(
+        builder: BotToastInit(),
+      ),
+
     );
   }
 }

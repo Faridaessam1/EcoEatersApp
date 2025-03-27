@@ -25,6 +25,12 @@ abstract class AppRoutes{
         return MaterialPageRoute(builder:(context) => SignUpScreen(),
             settings: settings
         );
+          switch(settings.name){
+      case RoutesName.customerHome:
+        return MaterialPageRoute(
+          builder: (context) => Layout(),
+          settings: settings,
+        );
 
       default:
         return MaterialPageRoute(builder:(context) => SplashScreen(),
