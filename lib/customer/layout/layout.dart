@@ -1,6 +1,6 @@
 import 'package:eco_eaters_app/core/constants/app_assets.dart';
 import 'package:eco_eaters_app/customer/cartTab/cart_tab.dart';
-import 'package:eco_eaters_app/customer/resturantsTab/resturants_tab.dart';
+import 'package:eco_eaters_app/customer/restaurantsTab/restaurants_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
@@ -20,7 +20,7 @@ class _LayoutState extends State<Layout> {
 
   List<Widget> tabs = [
     HomeTab(),
-    ResturantsTab(),
+    RestaurantsTab(),
     CartTab(),
     FavoriteTab(),
     ProfileTab(),
