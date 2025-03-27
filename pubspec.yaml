@@ -39,6 +39,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  smooth_page_indicator:
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,11 @@ flutter:
      - assets/icons/
      - assets/images/
   #   - images/a_dot_ham.jpeg
+
+    - assets/images/
+    - assets/icons/
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
