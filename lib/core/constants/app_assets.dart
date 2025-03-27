@@ -1,5 +1,9 @@
 abstract class AppAssets{
 
+static String ordersIcon = "assets/icons/orders_icon.png";
+static String newIcon = "assets/icons/new_icon.png";
+static String ecoEaterIcon = "assets/icons/eco_eaters_icon.png";
+  static String locationIcon = "assets/icons/location.png";
   static const String onBoardingImg = "assets/images/onboarding1.png";
   static const String onBoardingLogo = "assets/images/onBoardinglogo.png";
   static const String onBoarding2 = "assets/images/onBoarding2.png";

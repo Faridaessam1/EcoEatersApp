@@ -1,3 +1,6 @@
+import 'package:eco_eaters_app/core/ui/seller/widgets/layout_view.dart';
+import 'package:flutter/material.dart';
+
 import 'package:eco_eaters_app/ui/auth/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,6 +20,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +33,6 @@ class MyApp extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-
     );
   }
 }

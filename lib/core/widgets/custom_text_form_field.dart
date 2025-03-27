@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
-
-
 class CustomTextFormField extends StatefulWidget{
   String? iconPath;
   bool hasIcon;
@@ -16,9 +14,6 @@ class CustomTextFormField extends StatefulWidget{
   Color? borderColor;
   Color filledColor;
   TextEditingController? controller;
-
-
-
 
   CustomTextFormField({
     super.key,
@@ -34,8 +29,6 @@ class CustomTextFormField extends StatefulWidget{
     this.borderColor,
     this.controller,
     required this.filledColor
-
-
   });
 
   @override
@@ -64,30 +57,29 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             color: widget.iconColor ?? AppColors.primaryColor,
           ),
         ) : null,
-          suffixIcon: widget.isPassword
-              ? IconButton(
-            icon: Icon(
-              obscureText ? Icons.visibility_off : Icons.visibility,
-              color: widget.iconColor ?? AppColors.primaryColor,
-            ),
-            onPressed: () {
-              setState(() {
-                // kol ma luser y3ml press bnghyr el value lw true tkon false w l3ks
-                obscureText = !obscureText;
-              });
-            },
-          )
-              : null,
-          hintText: widget.hintText,
-          hintStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: widget.hintTextColor ?? AppColors.primaryColor,
-          ),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(
-                color:  widget.borderColor ?? AppColors.primaryColor,
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                icon: Icon(
+                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: widget.iconColor ?? AppColors.primaryColor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    // kol ma luser y3ml press bnghyr el value lw true tkon false w l3ks
+                    obscureText = !obscureText;
+                  });
+                },
               )
-          ),
+            : null,
+        hintText: widget.hintText,
+        hintStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: widget.hintTextColor ?? AppColors.primaryColor,
+            ),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: widget.borderColor ?? AppColors.primaryColor,
+            )),
         focusedBorder:OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
@@ -96,11 +88,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
 
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        borderSide: const BorderSide(
-          color: Colors.red,
-        )
-    ),
+            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(
+              color: Colors.red,
+            )),
       ),
     );
   }

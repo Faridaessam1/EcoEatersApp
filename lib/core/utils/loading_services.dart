@@ -4,7 +4,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../constants/app_colors.dart';
 
 
-
 void ConfigLoading() {
   EasyLoading.instance
   ..indicatorType = EasyLoadingIndicatorType.circle
